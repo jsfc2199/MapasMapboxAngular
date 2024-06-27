@@ -53,3 +53,7 @@ writeFileSync(targetPath, envFileContent)
 
 "start": "npm run envs && ng serve",
     "build": "npm run envs & ng build",
+
+
+instalcion de mapbox con npm install --save mapbox-gl
+npm i --save-dev @types/mapbox-gl
