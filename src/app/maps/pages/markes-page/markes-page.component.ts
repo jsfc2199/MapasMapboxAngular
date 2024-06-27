@@ -1,6 +1,10 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { LngLat, Map, Marker } from 'mapbox-gl';
 
+interface MarkerColor{
+  color: string,
+  marker: Marker
+}
 @Component({
   selector: 'app-markes-page',
   templateUrl: './markes-page.component.html',
@@ -11,6 +15,7 @@ export class MarkesPageComponent {
 
   map?: Map;
   currentCenter: LngLat = new LngLat(-74.5, 40);
+  currentMarkers: MarkerColor[] = []
 
   ngAfterViewInit(): void {
     if (!this.divMap) throw Error('Map elemento required');
@@ -48,5 +53,14 @@ export class MarkesPageComponent {
       color: color,
       draggable: true, //propiedad que permite mover el marcador
     }).setLngLat(lngLat).addTo(this.map)
+
+    this.currentMarkers.push({
+      color, marker
+    })
+  }
+
+  deleteMarker(i: number){
+    this.currentMarkers[i].marker.remove()
+    this.currentMarkers.splice(i, 1)
   }
 }
