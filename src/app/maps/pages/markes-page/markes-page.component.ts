@@ -71,6 +71,8 @@ export class MarkesPageComponent {
     });
 
     this.saveToLocalStorage();
+
+    marker.on('dragend',() => this.saveToLocalStorage()) //actualizamos el guardado de las coordenadas
   }
 
   deleteMarker(i: number) {
