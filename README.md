@@ -19,9 +19,9 @@ Aunque el uso de mapas no es algo directamente relacionado con Angular, ya que t
 ## Automatización de las Variables de Entorno (env) para Usar `process.env` en Angular
 
 1. Instalar `dotenv`:
-   ```sh
-   npm install dotenv --save
-   ```
+```sh
+npm install dotenv --save
+```
 
 2. Crear la carpeta scripts con un archivo set-env.js con el siguiente contenido:
 ```js
@@ -41,16 +41,21 @@ mkdirSync('./src/environments', { recursive: true });
 writeFileSync(targetPath, envFileContent);
 ```
 3. Modificar `package.json`:
-  ```sh
-  "start": "npm run envs && ng serve",
-  "build": "npm run envs && ng build",
-  ```
+- Añadir Script 
+```sh
+"envs": "node ./scripts/set-env.js"
+```
+Modificar el start y el build
+```sh
+"start": "npm run envs && ng serve",
+"build": "npm run envs && ng build",
+```
 
 4. Instalar `mapbox`:
-   ```sh
-   npm install --save mapbox-gl
-   npm install --save-dev @types/mapbox-gl
-    ```
+```sh
+npm install --save mapbox-gl
+npm install --save-dev @types/mapbox-gl
+```
 ## StandAloneComponents
 Componentes que se pueden "sostener" por si mismos, es decir, componentes que tienen todo lo necesario para sobrevivir por si mismos (un componente que es como un módulo)
 
