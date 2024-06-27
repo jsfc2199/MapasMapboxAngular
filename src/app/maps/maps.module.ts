@@ -11,6 +11,7 @@ import { PropertiesPageComponent } from './pages/properties-page/properties-page
 import { ZoomRangePageComponent } from './pages/zoom-range-page/zoom-range-page.component';
 
 import * as mapboxgl from 'mapbox-gl';
+import { CounterAloneComponent } from '../alone/components/counter-alone/counter-alone.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import * as mapboxgl from 'mapbox-gl';
   ],
   imports: [
     CommonModule,
-    MapsRoutingModule
+    MapsRoutingModule,
+    CounterAloneComponent //los standalone van en los imports, no en las declaraciones, cuando se usan módulos standard
   ]
 })
 export class MapsModule { }
