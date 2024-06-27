@@ -10,6 +10,7 @@ import { MarkesPageComponent } from './pages/markes-page/markes-page.component';
 import { PropertiesPageComponent } from './pages/properties-page/properties-page.component';
 import { ZoomRangePageComponent } from './pages/zoom-range-page/zoom-range-page.component';
 
+import * as mapboxgl from 'mapbox-gl';
 
 @NgModule({
   declarations: [
