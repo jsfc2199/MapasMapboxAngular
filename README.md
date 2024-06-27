@@ -65,3 +65,5 @@ Componentes que se pueden "sostener" por si mismos, es decir, componentes que ti
 - ¿Cómo cargarlos de forma perezosa?
 - ¿Cómo conectarlos entre sí?
 - ¿Cómo integrarlos en módulos y componentes tradicionales?
+
+ng g c alone/pages/alonePage --standalone
