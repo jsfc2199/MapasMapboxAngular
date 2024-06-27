@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import {Map} from 'mapbox-gl'
+import {LngLat, Map} from 'mapbox-gl'
 @Component({
   selector: 'app-zoom-range-page',
   templateUrl: './zoom-range-page.component.html',
@@ -11,6 +11,7 @@ export class ZoomRangePageComponent {
 
   zoom = 10
   map?: Map;
+  currentCenter: LngLat = new LngLat(-74.5, 40)
 
   //lo usamos aquí para esperar que todos los componentes hijos carguen
   ngAfterViewInit(): void {
@@ -20,7 +21,7 @@ export class ZoomRangePageComponent {
         'pk.eyJ1IjoianNmYzIxOTkiLCJhIjoiY2x4eGtnczd4MmVuazJpcHRzdXdqcmh3ZSJ9.1ojpSPj3K7ubSwUr7rgeAw',
       container: this.divMap.nativeElement, // container ID
       style: 'mapbox://styles/mapbox/streets-v12', // style URL
-      center: [-74.5, 40], // starting position [lng, lat]
+      center: this.currentCenter, // starting position [lng, lat]
       zoom: this.zoom, // starting zoom
     });
 
@@ -39,6 +40,11 @@ export class ZoomRangePageComponent {
       this.map!.zoomTo(18)
     })
 
+    this.map.on('moveend', (z) => {
+      this.currentCenter = this.map!.getCenter()
+    })
+
+
   }
 
   zoomIn(){
@@ -52,5 +58,10 @@ export class ZoomRangePageComponent {
   zoomChanged(value: string){
     this.zoom = +value;
     this.map!.zoomTo(this.zoom)
+  }
+
+  ngOnDestroy(): void {
+    // Como funcionan como observables mas o menos, debemos limpiar los listeners
+    this.map?.remove()
   }
 }
