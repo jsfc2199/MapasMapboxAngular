@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { MapsRoutingModule } from './maps-routing.module';
 import { MiniMapComponent } from './components/mini-map/mini-map.component';
-import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { MapsLayoutComponent } from './layout/maps-layout/maps-layout.component';
 import { FullScreenPageComponent } from './pages/full-screen-page/full-screen-page.component';
 import { MarkesPageComponent } from './pages/markes-page/markes-page.component';
@@ -12,11 +11,11 @@ import { ZoomRangePageComponent } from './pages/zoom-range-page/zoom-range-page.
 
 import * as mapboxgl from 'mapbox-gl';
 import { CounterAloneComponent } from '../alone/components/counter-alone/counter-alone.component';
+import { SideMenuComponent } from '../alone/components/side-menu/side-menu.component';
 
 @NgModule({
   declarations: [
     MiniMapComponent,
-    SideMenuComponent,
     MapsLayoutComponent,
     FullScreenPageComponent,
     MarkesPageComponent,
@@ -26,7 +25,8 @@ import { CounterAloneComponent } from '../alone/components/counter-alone/counter
   imports: [
     CommonModule,
     MapsRoutingModule,
-    CounterAloneComponent //los standalone van en los imports, no en las declaraciones, cuando se usan módulos standard
+    CounterAloneComponent, //los standalone van en los imports, no en las declaraciones, cuando se usan módulos standard
+    SideMenuComponent
   ]
 })
 export class MapsModule { }
